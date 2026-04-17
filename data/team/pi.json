@@ -1,0 +1,13 @@
+{
+  "initials": "LI",
+  "name": "Lorem Ipsum",
+  "role": "Lorem Investigator",
+  "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
+  "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  "links": {
+    "website": "#",
+    "scholar": "#",
+    "ads": "#",
+    "orcid": "#"
+  }
+}

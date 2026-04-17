@@ -1,0 +1,34 @@
+{
+  "members": [
+    {
+      "id": "ananya",
+      "initials": "LO",
+      "name": "Lorem Four",
+      "role": "Lorem Assistant",
+      "batch": "2023 - Present",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    },
+    {
+      "id": "dolor",
+      "initials": "LO",
+      "name": "Lorem Five",
+      "role": "Lorem Student",
+      "batch": "2024 - 2026",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    }
+  ]
+}

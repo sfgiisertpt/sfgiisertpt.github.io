@@ -1,0 +1,20 @@
+{
+  "members": [
+    {
+      "id": "arjun",
+      "initials": "LO",
+      "name": "Lorem One",
+      "modalName": "Lorem One",
+      "role": "Lorem Fellow",
+      "batch": "2023 - Present",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    }
+  ]
+}

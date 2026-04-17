@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lorem Ipsum | Dolor Sit Amet</title>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <canvas id="nebula-canvas"></canvas>
+
+    <nav id="navbar"></nav>
+
+    <section class="hero small">
+        <div class="hero-content">
+            <h1>Lorem <span class="highlight">Ipsum</span></h1>
+            <p class="hero-subtitle">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+    </section>
+
+    <section id="group-pi">
+        <div class="section-header">
+            <p class="section-label">Lorem</p>
+            <h2 class="section-title">Lorem Ipsum Dolor</h2>
+        </div>
+        <div class="pi-profile" id="pi-profile"></div>
+    </section>
+
+    <section id="postdocs">
+        <div class="team-category">
+            <h3 class="team-category-title">Lorem Ipsum</h3>
+            <div class="team-member-grid" data-team-file="postdocs.json"></div>
+        </div>
+    </section>
+
+    <section id="phd-students">
+        <div class="team-category">
+            <h3 class="team-category-title">Dolor Sit Amet</h3>
+            <div class="team-member-grid" data-team-file="phd-students.json"></div>
+        </div>
+    </section>
+
+    <section id="research-assistants">
+        <div class="team-category">
+            <h3 class="team-category-title">Consectetur Adipiscing</h3>
+            <div class="team-member-grid" data-team-file="research-assistants.json"></div>
+        </div>
+    </section>
+
+    <div id="team-modals"></div>
+
+    <section id="join-team">
+        <div class="section-header">
+            <p class="section-label">Lorem</p>
+            <h2 class="section-title">Lorem Ipsum Dolor</h2>
+        </div>
+        <div class="research-grid">
+            <div class="research-card" data-delay="0">
+                <div class="research-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
+                        <path d="M12 3a6 6 0 00-6 6c0 6 6 12 6 12s6-6 6-12a6 6 0 00-6-6z"/>
+                        <circle cx="12" cy="9" r="2"/>
+                    </svg>
+                </div>
+                <h3>Lorem Ipsum</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="research-card" data-delay="100">
+                <div class="research-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
+                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                        <path d="M2 17l10 5 10-5"/>
+                        <path d="M2 12l10 5 10-5"/>
+                    </svg>
+                </div>
+                <h3>Dolor Sit Amet</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+            <div class="research-card" data-delay="200">
+                <div class="research-icon">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
+                        <circle cx="12" cy="12" r="3"/>
+                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    </svg>
+                </div>
+                <h3>Consectetur Adipiscing</h3>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer id="footer"></footer>
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>
