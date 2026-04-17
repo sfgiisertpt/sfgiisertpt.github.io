@@ -29,6 +29,21 @@
         "ads": "#",
         "orcid": "#"
       }
+    },
+    {
+      "id": "ipsum",
+      "initials": "LO",
+      "name": "Lorem Three",
+      "role": "Lorem Student",
+      "batch": "2022 - 2026",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
     }
   ]
 }

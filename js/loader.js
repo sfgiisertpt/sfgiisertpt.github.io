@@ -18,6 +18,18 @@ export async function loadComponents() {
                 if (homeLink) {
                     homeLink.setAttribute('href', `${baseDir}index.html`);
                 }
+
+                const navLinks = navbar.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => {
+                    const href = link.getAttribute('href');
+                    if (href.startsWith('#')) {
+                        if (isInPagesDir) {
+                            link.setAttribute('href', `${baseDir}index.html${href}`);
+                        }
+                    } else if (href.startsWith('./')) {
+                        link.setAttribute('href', `${baseDir}${href.substring(2)}`);
+                    }
+                });
             }
         }
 
@@ -61,5 +73,24 @@ function reattachEventListeners() {
                 navbar.classList.remove('scrolled');
             }
         });
+        
+        // Mobile Menu Toggle
+        const mobileMenuBtn = navbar.querySelector('.mobile-menu-btn');
+        const navLinks = navbar.querySelector('.nav-links');
+        
+        if (mobileMenuBtn && navLinks) {
+            mobileMenuBtn.addEventListener('click', () => {
+                mobileMenuBtn.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+            
+            // Close menu when clicking a link
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenuBtn.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
     }
 }

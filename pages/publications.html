@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Publications | Star and Planet Formation Group - IISER Tirupati</title>
+    <meta name="description" content="Publications from the Star and Planet Formation Group at IISER Tirupati. Browse our research papers in astrophysics, star formation, and planetary science.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.css" crossorigin="anonymous">
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/katex.min.js" crossorigin="anonymous"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.21/dist/contrib/auto-render.min.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <canvas id="nebula-canvas"></canvas>
+
+    <nav id="navbar"></nav>
+
+    <section class="hero small">
+        <div class="hero-content">
+            <h1>Our <span class="highlight">Publications</span></h1>
+            <p class="hero-subtitle">Explore research contributions from the Star and Planet Formation Group at IISER Tirupati.</p>
+        </div>
+    </section>
+
+    <section id="publications-page">
+        <div class="pub-controls">
+            <div class="pub-search-wrapper">
+                <svg class="pub-search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <circle cx="11" cy="11" r="8"/>
+                    <path d="M21 21l-4.35-4.35"/>
+                </svg>
+                <input type="text" id="pub-search" class="pub-search" placeholder="Search by title, author, or keyword...">
+            </div>
+            <div class="pub-filters">
+                <button class="pub-filter-btn active" data-filter="all">All</button>
+                <button class="pub-filter-btn" data-filter="article">Articles</button>
+                <button class="pub-filter-btn" data-filter="inproceedings">Proceedings</button>
+                <button class="pub-filter-btn" data-filter="misc">Other</button>
+            </div>
+            <div class="pub-stats" id="pub-stats"></div>
+        </div>
+        <div class="pub-timeline" id="pub-timeline"></div>
+    </section>
+
+    <!-- Publication Detail Modal -->
+    <div class="pub-modal-overlay" id="pub-modal-overlay">
+        <div class="pub-modal" id="pub-modal">
+            <button class="pub-modal-close" type="button" id="pub-modal-close">&times;</button>
+            <div class="pub-modal-body" id="pub-modal-body"></div>
+        </div>
+    </div>
+
+    <footer id="footer"></footer>
+
+    <script type="module" src="../js/main.js"></script>
+</body>
+</html>

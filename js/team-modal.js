@@ -185,7 +185,9 @@ function attachModalHandlers() {
 }
 
 async function fetchJson(path) {
-    const response = await fetch(path);
+    // Append a timestamp to prevent the browser from caching the JSON response
+    const cacheBuster = new Date().getTime();
+    const response = await fetch(`${path}?v=${cacheBuster}`, { cache: 'no-cache' });
     if (!response.ok) {
         throw new Error(`Failed to load ${path}`);
     }
