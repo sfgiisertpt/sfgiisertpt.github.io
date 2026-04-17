@@ -18,7 +18,7 @@ function setupScrollAnimations() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.research-card, .team-card, .publication-item').forEach(el => {
+    document.querySelectorAll('.research-card, .team-card, .publication-item, .research-teaser-card, .research-highlight-card').forEach(el => {
         observer.observe(el);
     });
 }

@@ -2,9 +2,12 @@
 export async function loadComponents() {
     try {
         // Determine the correct path based on current location
-        // For pages in /pages/ directory, go up one level
-        const isInPagesDir = window.location.pathname.includes('/pages/');
-        const baseDir = isInPagesDir ? '../' : './';
+        // For pages in /pages/research/ (two levels deep), go up two levels
+        // For pages in /pages/ (one level deep), go up one level
+        const path = window.location.pathname;
+        const isInResearchSubdir = path.includes('/pages/research/');
+        const isInPagesDir = path.includes('/pages/') && !isInResearchSubdir;
+        const baseDir = isInResearchSubdir ? '../../' : (isInPagesDir ? '../' : './');
 
         // Load navigation
         const navResponse = await fetch(`${baseDir}includes/nav.html`);
@@ -23,7 +26,7 @@ export async function loadComponents() {
                 navLinks.forEach(link => {
                     const href = link.getAttribute('href');
                     if (href.startsWith('#')) {
-                        if (isInPagesDir) {
+                        if (isInPagesDir || isInResearchSubdir) {
                             link.setAttribute('href', `${baseDir}index.html${href}`);
                         }
                     } else if (href.startsWith('./')) {

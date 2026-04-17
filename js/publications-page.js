@@ -183,22 +183,22 @@ function cleanLaTeX(text) {
 function cleanForDisplay(text) {
     if (!text) return '';
     let res = text.replace(/^\{|\}$/g, '');
-    
+
     // 1. Remove \ensuremath{} wrapper but keep its contents
     res = res.replace(/\\ensuremath\{([^}]*)\}/g, '$1');
-    
+
     // 2. Process text outside of math mode
     let parts = res.split('$');
     for (let i = 0; i < parts.length; i += 2) {
         let part = parts[i];
-        
+
         // Convert accented characters to plain text
         part = part.replace(/\{\\['`^~"=.uvHtcdb]\{?([a-zA-Z])\}?\}/g, '$1');
         part = part.replace(/\\['`^~"=.uvHtcdb]\{?([a-zA-Z])\}?/g, '$1');
-        
+
         // Wrap bare LaTeX math macros in $...$
         part = part.replace(/(\\(?!text[a-zA-Z]+)[a-zA-Z]+)/g, '$$$1$$');
-        
+
         // Text-mode commands -> unicode
         part = part
             .replace(/\\texttimes/g, '×')
@@ -207,25 +207,25 @@ function cleanForDisplay(text) {
             .replace(/\\textrightarrow/g, '→')
             .replace(/\\textendash/g, '–')
             .replace(/\\raisebox\{[^}]*\}/g, '');
-            
+
         // Clean braces outside math
         part = part.replace(/\{|\}/g, '');
-        
+
         parts[i] = part;
     }
     res = parts.join('$');
-    
+
     // 3. Merge adjacent math blocks (e.g., $\alpha$$_{Q}$ -> $\alpha_{Q}$)
     // This also cleans up any empty $$ created by wrapping
     res = res.replace(/\$\$/g, '');
-    
+
     // Other cleanups
     res = res
         .replace(/\\&/g, '&')
         .replace(/─/g, '–')
         .replace(/\s+/g, ' ')
         .trim();
-        
+
     return res;
 }
 
@@ -499,7 +499,7 @@ function updateStats(pubs) {
     if (!statsEl) return;
     const total = pubs.length;
     const articles = pubs.filter(p => p.type === 'article').length;
-    statsEl.innerHTML = `Showing <strong>${total}</strong> publication${total !== 1 ? 's' : ''}${articles !== total ? ` (${articles} journal article${articles !== 1 ? 's' : ''})` : ''}`;
+    statsEl.innerHTML = `Showing <strong>${total}</strong> publication${total !== 1 ? 's' : ''}`;
 }
 
 // ---------------------------------------------------------------------------
@@ -512,7 +512,7 @@ function applyFilters() {
     // Type filter
     if (currentFilter !== 'all') {
         if (currentFilter === 'misc') {
-            filtered = filtered.filter(p => !['article', 'inproceedings'].includes(p.type));
+            filtered = filtered.filter(p => !['article', 'dataset'].includes(p.type));
         } else {
             filtered = filtered.filter(p => p.type === currentFilter);
         }
