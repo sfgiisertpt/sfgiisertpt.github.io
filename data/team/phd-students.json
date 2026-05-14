@@ -1,17 +1,16 @@
 {
   "members": [
     {
-      "id": "sneha",
-      "initials": "LO",
-      "name": "Lorem Two",
-      "role": "Lorem Student",
-      "batch": "2021 - 2025",
-      "photo": "data/team/photos/sneha.jpg",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "id": "greg",
+      "initials": "GMB",
+      "name": "Gregory Mathews Ben",
+      "role": "PhD Student",
+      "batch": "2024 - Present",
+      "about": "Something something about Gregory Mathews Ben.",
+      "researchInterests": "Protoplanetary Disks, Low Mass Star Formation",
       "links": {
         "website": "#",
-        "scholar": "#",
+        "scholar": "https://scholar.google.com/citations?user=tw89pI4AAAAJ&hl=en",
         "ads": "#",
         "orcid": "#"
       }

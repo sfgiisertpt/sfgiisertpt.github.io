@@ -51,3 +51,7 @@ The URL will be:
 - [ ] **Remove Placeholder Text**: Replace all remaining "Lorem Ipsum" text across the site (e.g., the subtitle on the homepage, and section headers in `pages/team.html`).
 - [ ] **Join Us Section**: Update the open positions/recruitment text in the "Join Us" section at the bottom of the Team page (or hide it if there are no open positions right now).
 - [ ] **Facilities Section**: Finalize the text and ensure appropriate logos are added for the observational facilities section on the homepage.
+- [ ] **ALUMNI SECTION**: Add something for the alumni section.
+- [ ] Verify KaTeX integration
+- [ ] News Section
+- [ ] NASA APOD on home page

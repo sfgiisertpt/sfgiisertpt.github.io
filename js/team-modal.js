@@ -109,11 +109,11 @@ function createMemberModal(member, modalId) {
             </div>
             <div class="team-modal-right">
                 <div>
-                    <h4>Lorem Ipsum</h4>
+                    <h4>About</h4>
                     <p>${about}</p>
                 </div>
                 <div>
-                    <h4>Dolor Sit Amet</h4>
+                    <h4>Research Interests</h4>
                     <p>${researchInterests}</p>
                 </div>
             </div>
