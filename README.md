@@ -2,6 +2,45 @@
 
 Website for the Star Formation Group at IISER Tirupati.
 
+## Local development
+
+This is a static site, so any simple HTTP server will work.
+
+1. Open a terminal in the project root.
+2. Run a local server (pick one):
+
+	```bash
+	# Python 3
+	python3 -m http.server 8000
+	```
+
+3. Open http://localhost:8000 in your browser.
+
+Notes:
+- If port 8000 is in use, choose another (e.g., 8080).
+- You can also use the VS Code Live Server extension if you prefer.
+
+## GitHub Pages hosting
+
+### User/Organization site (recommended for this repo)
+
+Because this repo is named `sfgiisertpt.github.io`, it can be served as a user/org site.
+
+1. Push the site to the default branch (usually `main`).
+2. In GitHub: Settings -> Pages.
+3. Source: Deploy from a branch.
+4. Branch: `main` and folder: `/ (root)`.
+5. Save and wait for the build to finish.
+
+Your site will be available at:
+`https://<username-or-org>.github.io/`
+
+### Project site (if you rename the repo)
+
+If you rename the repo to something else, set GitHub Pages to deploy from `main` / `/ (root)`.
+The URL will be:
+`https://<username-or-org>.github.io/<repo-name>/`
+
 ## To-Do List
 
 - [ ] **Homepage Content**: Finalize the text and content on the homepage. Currently, 4 research area cards are included to test the design.

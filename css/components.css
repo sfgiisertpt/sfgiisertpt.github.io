@@ -469,6 +469,13 @@ a.research-card--link {
     font-size: 3rem;
     font-weight: 600;
     color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.pi-avatar--image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .pi-name {
@@ -570,6 +577,13 @@ a.research-card--link {
     font-size: 3.5rem;
     font-weight: 600;
     color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.team-member-avatar-closed--image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .team-member-closed h3 {
@@ -734,6 +748,13 @@ a.research-card--link {
     font-size: 3rem;
     font-weight: 600;
     color: var(--bg-primary);
+    overflow: hidden;
+}
+
+.team-modal-avatar--image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .team-modal-name {

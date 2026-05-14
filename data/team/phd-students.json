@@ -6,6 +6,7 @@
       "name": "Lorem Two",
       "role": "Lorem Student",
       "batch": "2021 - 2025",
+      "photo": "data/team/photos/sneha.jpg",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "links": {
@@ -21,6 +22,7 @@
       "name": "Lorem Three",
       "role": "Lorem Student",
       "batch": "2022 - 2026",
+      "photo": "data/team/photos/ipsum.jpg",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "links": {

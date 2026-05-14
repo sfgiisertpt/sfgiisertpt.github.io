@@ -18,35 +18,124 @@ export async function loadSelectedPublications() {
 
 function parseBibTeX(bibText) {
     const entries = [];
-    const entryRegex = /@([a-zA-Z]+)\s*\{\s*([^,]+),([^@]*)\}/g;
-    let match;
-    
-    while ((match = entryRegex.exec(bibText)) !== null) {
-        const type = match[1].toLowerCase();
-        const id = match[2].trim();
-        let fieldsString = match[3];
-        
-        const entry = { type, id };
-        
-        // Remove trailing comma and whitespace
-        fieldsString = fieldsString.replace(/,\s*$/, '');
-        
-        const fieldRegex = /([a-zA-Z0-9_]+)\s*=\s*(?:\{([^}]*)\}|"([^"]*)"|([^,]*))/g;
-        let fieldMatch;
-        
-        while ((fieldMatch = fieldRegex.exec(fieldsString)) !== null) {
-            const key = fieldMatch[1].toLowerCase();
-            let value = fieldMatch[2] || fieldMatch[3] || fieldMatch[4];
-            if (value) {
-                value = value.trim().replace(/^\{|\}$/g, '').replace(/\n/g, ' ').replace(/\s+/g, ' ');
-                entry[key] = value;
-            }
+    let pos = 0;
+
+    while (pos < bibText.length) {
+        // Find next @
+        const atIndex = bibText.indexOf('@', pos);
+        if (atIndex === -1) break;
+
+        // Extract entry type
+        const typeMatch = bibText.slice(atIndex).match(/^@([a-zA-Z]+)\s*\{/);
+        if (!typeMatch) {
+            pos = atIndex + 1;
+            continue;
         }
-        
+
+        const type = typeMatch[1].toLowerCase();
+        let bracePos = atIndex + typeMatch[0].length - 1;
+
+        // Find matching closing brace
+        let braceCount = 1;
+        let fieldStart = bracePos + 1;
+        bracePos++;
+
+        while (bracePos < bibText.length && braceCount > 0) {
+            const char = bibText[bracePos];
+            if (char === '{' && bibText[bracePos - 1] !== '\\') braceCount++;
+            else if (char === '}' && bibText[bracePos - 1] !== '\\') braceCount--;
+            bracePos++;
+        }
+
+        const entryContent = bibText.slice(fieldStart, bracePos - 1);
+
+        // Extract ID (first item before comma)
+        const idMatch = entryContent.match(/^([^,]+),/);
+        if (!idMatch) {
+            pos = bracePos;
+            continue;
+        }
+
+        const id = idMatch[1].trim();
+        const fieldsString = entryContent.slice(idMatch[0].length);
+
+        const entry = { type, id };
+
+        // Parse fields - more robust handling of braces and quotes
+        const fields = parseFields(fieldsString);
+        Object.assign(entry, fields);
+
         entries.push(entry);
+        pos = bracePos;
     }
-    
+
     return entries.sort((a, b) => (b.year || 0) - (a.year || 0));
+}
+
+function parseFields(fieldsString) {
+    const fields = {};
+    let pos = 0;
+
+    while (pos < fieldsString.length) {
+        // Skip whitespace and commas
+        while (pos < fieldsString.length && /[\s,]/.test(fieldsString[pos])) {
+            pos++;
+        }
+        if (pos >= fieldsString.length) break;
+
+        // Find field name
+        const nameMatch = fieldsString.slice(pos).match(/^([a-zA-Z0-9_]+)\s*=/);
+        if (!nameMatch) break;
+
+        const key = nameMatch[1].toLowerCase();
+        pos += nameMatch[0].length;
+
+        // Skip whitespace
+        while (pos < fieldsString.length && /\s/.test(fieldsString[pos])) {
+            pos++;
+        }
+
+        // Extract value
+        let value = '';
+        if (fieldsString[pos] === '{') {
+            // Brace-delimited value
+            let braceCount = 1;
+            pos++;
+            const valueStart = pos;
+            while (pos < fieldsString.length && braceCount > 0) {
+                if (fieldsString[pos] === '{' && fieldsString[pos - 1] !== '\\') braceCount++;
+                else if (fieldsString[pos] === '}' && fieldsString[pos - 1] !== '\\') braceCount--;
+                if (braceCount > 0) pos++;
+            }
+            value = fieldsString.slice(valueStart, pos).trim();
+            pos++; // Skip closing brace
+        } else if (fieldsString[pos] === '"') {
+            // Quote-delimited value
+            pos++;
+            const valueStart = pos;
+            while (pos < fieldsString.length && fieldsString[pos] !== '"') {
+                if (fieldsString[pos] === '\\') pos++;
+                pos++;
+            }
+            value = fieldsString.slice(valueStart, pos).trim();
+            pos++; // Skip closing quote
+        } else {
+            // Unquoted value (up to comma)
+            const valueStart = pos;
+            while (pos < fieldsString.length && fieldsString[pos] !== ',') {
+                pos++;
+            }
+            value = fieldsString.slice(valueStart, pos).trim();
+        }
+
+        // Clean value
+        if (value) {
+            value = value.replace(/\n/g, ' ').replace(/\s+/g, ' ');
+            fields[key] = value;
+        }
+    }
+
+    return fields;
 }
 
 function formatAuthors(authorString) {

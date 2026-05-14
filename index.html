@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="./css/main.css">
     <link rel="stylesheet" href="./css/components.css">
     <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 
 <body>
@@ -21,8 +22,7 @@
     <section class="hero">
         <div class="hero-content">
             <h1>Star and Planet Formation Group<br><span class="highlight">IISER Tirupati</span></h1>
-            <p class="hero-subtitle"><b>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
-                    incididunt ut labore et dolore magna aliqua.</b></p>
+            <p class="hero-subtitle"><b>Department of Physics</b></p>
             <div class="hero-actions">
                 <a href="#research" class="btn btn-primary">
                     RESEARCH
@@ -203,9 +203,8 @@
                 </div>
             </div>
 
-            <div class="map-container"
-                style="min-height: 300px; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1); display: flex; justify-content: center; align-items: center; background: transparent;">
-                <img src="./assets/iiser-tirupati-logo-transparent.png" alt="IISER Tirupati" style="max-width: 100%; max-height: 100%; object-fit: contain;">
+            <div id="map" class="map-container"
+                style="min-height: 300px; width: 100%; border-radius: 8px; overflow: hidden; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
             </div>
 
         </div>
@@ -213,6 +212,7 @@
 
     <footer id="footer"></footer>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script type="module" src="./js/main.js"></script>
 </body>
 

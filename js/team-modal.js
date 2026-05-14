@@ -22,6 +22,22 @@ function getInitials(member) {
     return words.slice(0, 2).map((word) => word[0].toUpperCase()).join('');
 }
 
+function createAvatarElement(member, className) {
+    const baseDir = getBaseDir();
+    const photo = normalizeText(member.photo).trim();
+    const initials = getInitials(member);
+    const photoPath = photo ? `${baseDir}${photo}` : null;
+
+    let html = '';
+    if (photoPath) {
+        html = `<img src="${photoPath}" alt="${normalizeText(member.name)}" class="${className}--image">`;
+    } else {
+        html = `${initials}`;
+    }
+
+    return html;
+}
+
 function getSocialIcon(label) {
     const fontSize = label.length > 1 ? 8.5 : 12;
     return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><text x="12" y="15.5" text-anchor="middle" dominant-baseline="middle" font-size="${fontSize}" font-weight="700">${label}</text></svg>`;
@@ -53,12 +69,12 @@ function createMemberCard(member, modalId) {
     const memberName = normalizeText(member.name);
     const role = normalizeText(member.role);
     const batch = normalizeText(member.batch);
-    const initials = getInitials(member);
+    const avatar = createAvatarElement(member, 'team-member-avatar-closed');
     const socials = createSocialLinks(member.links, 'team-social-link');
 
     card.innerHTML = `
         <div class="team-member-closed">
-            <div class="team-member-avatar-closed">${initials}</div>
+            <div class="team-member-avatar-closed">${avatar}</div>
             <h3>${memberName}</h3>
             <p>${role}</p>
             <p class="team-member-batch">${batch}</p>
@@ -79,14 +95,14 @@ function createMemberModal(member, modalId) {
     const batch = normalizeText(member.batch);
     const about = normalizeText(member.about);
     const researchInterests = normalizeText(member.researchInterests);
-    const initials = getInitials(member);
+    const avatar = createAvatarElement(member, 'team-modal-avatar');
     const socials = createSocialLinks(member.links, 'team-modal-social-link');
 
     wrapper.innerHTML = `
         <div class="team-modal">
             <button class="team-modal-close" type="button">&times;</button>
             <div class="team-modal-left">
-                <div class="team-modal-avatar">${initials}</div>
+                <div class="team-modal-avatar">${avatar}</div>
                 <h2 class="team-modal-name">${modalName}</h2>
                 <p class="team-modal-batch">${role}${role && batch ? ' (' : ''}${batch}${role && batch ? ')' : ''}</p>
                 <div class="team-modal-socials">${socials}</div>
@@ -117,12 +133,12 @@ function renderPIProfile(piData) {
     const role = normalizeText(piData.role);
     const summary = normalizeText(piData.summary);
     const researchInterests = normalizeText(piData.researchInterests);
-    const initials = normalizeText(piData.initials) || getInitials(piData);
+    const avatar = createAvatarElement(piData, 'pi-avatar');
     const socials = createSocialLinks(piData.links, 'pi-social-link');
 
     piContainer.innerHTML = `
         <div class="pi-photo">
-            <div class="pi-avatar">${initials}</div>
+            <div class="pi-avatar">${avatar}</div>
             <h3 class="pi-name">${name}</h3>
             <p class="pi-role">${role}</p>
             <div class="pi-socials">${socials}</div>

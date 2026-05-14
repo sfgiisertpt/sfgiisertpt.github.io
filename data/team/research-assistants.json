@@ -1,13 +1,14 @@
 {
   "members": [
     {
-      "id": "ananya",
-      "initials": "LO",
-      "name": "Lorem Four",
-      "role": "Lorem Assistant",
-      "batch": "2023 - Present",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "id": "sasi_mitra",
+      "initials": "SM",
+      "name": "Sasi Mitra",
+      "role": "MS Student",
+      "batch": "2021 - Present",
+      "photo": "data/team/photos/sasi_mitra.jpeg",
+      "about": "Something something about Sasi Mitra Behara.",
+      "researchInterests": "Some more placeholder text about Sasi Mitra Behara's research interests.",
       "links": {
         "website": "#",
         "scholar": "#",
@@ -21,6 +22,7 @@
       "name": "Lorem Five",
       "role": "Lorem Student",
       "batch": "2024 - 2026",
+      "photo": "data/team/photos/dolor.jpg",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "links": {

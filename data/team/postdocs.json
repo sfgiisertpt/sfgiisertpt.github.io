@@ -7,6 +7,7 @@
       "modalName": "Lorem One",
       "role": "Lorem Fellow",
       "batch": "2023 - Present",
+      "photo": "data/team/photos/arjun.jpg",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "links": {

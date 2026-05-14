@@ -1,6 +1,7 @@
 import { GlobularCluster } from './canvas-renderer.js';
 import { initializeAnimations } from './animations.js';
 import { loadComponents } from './loader.js';
+import { initializeMap } from './map.js';
 
 import { loadSelectedPublications } from './publications.js';
 import { initPublicationsPage } from './publications-page.js';
@@ -24,6 +25,9 @@ async function initializeApp() {
 
     // Initialize animations
     initializeAnimations();
+
+    // Initialize map
+    initializeMap();
 }
 
 // Start the app when DOM is ready
