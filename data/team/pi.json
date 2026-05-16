@@ -1,14 +1,14 @@
 {
-  "initials": "LI",
-  "name": "Lorem Ipsum",
-  "role": "Lorem Investigator",
-  "photo": "data/team/photos/pi.jpg",
+  "initials": "JJ",
+  "name": "Jessy Jose",
+  "role": "Associate Professor",
+  "photo": "data/team/photos/jessy.jpg",
   "summary": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris.",
   "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
   "links": {
     "website": "#",
-    "scholar": "#",
+    "scholar": "https://scholar.google.com/citations?user=lBJBBfMAAAAJ&hl=en",
     "ads": "#",
-    "orcid": "#"
+    "orcid": "https://orcid.org/0000-0003-4908-4404"
   }
 }

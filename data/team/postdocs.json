@@ -1,13 +1,13 @@
 {
   "members": [
     {
-      "id": "arjun",
-      "initials": "LO",
-      "name": "Lorem One",
-      "modalName": "Lorem One",
-      "role": "Lorem Fellow",
-      "batch": "2023 - Present",
-      "photo": "data/team/photos/arjun.jpg",
+      "id": "1",
+      "initials": "AK",
+      "name": "Adarsh Kuruvanthodi",
+      "modalName": "Adarsh Kuruvanthodi",
+      "role": "Postdoctoral Fellow",
+      "batch": "2025 - Present",
+      "photo": "#",
       "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
       "links": {
