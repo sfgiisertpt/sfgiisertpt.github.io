@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Outreach | Star and Planet Formation Group — IISER Tirupati</title>
+    <meta name="description" content="Science communication and outreach activities of the Star and Planet Formation Group at IISER Tirupati — workshops, seminars, and public engagement programmes.">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/main.css">
+    <link rel="stylesheet" href="../css/components.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+    <style>
+        /* ═══════════════════════════════════════
+           OUTREACH — EDITORIAL LAYOUT
+        ═══════════════════════════════════════ */
+
+        /* ── Intro blurb ── */
+        .outreach-intro {
+            max-width: 780px;
+            margin: 0 auto;
+            padding: 0 2rem 3rem;
+            text-align: center;
+        }
+        .outreach-intro p {
+            font-size: 1.1rem;
+            line-height: 1.85;
+            color: var(--text-secondary);
+        }
+
+        /* ── Feed container ── */
+        #outreach-feed {
+            padding: 0 0 6rem;
+        }
+
+        /* ── Single event ── */
+        .event-article {
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 4.5rem 2rem;
+            opacity: 0;
+            transform: translateY(36px);
+            transition: opacity 0.65s ease, transform 0.65s ease;
+        }
+        .event-article.visible {
+            opacity: 1;
+            transform: none;
+        }
+
+        /* Thin rule between events */
+        .event-article + .event-article::before {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 2rem;
+            right: 2rem;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border-subtle) 20%, var(--border-subtle) 80%, transparent);
+        }
+
+        /* ── Event header ── */
+        .event-header {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            margin-bottom: 2.2rem;
+        }
+        .event-type-row {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .event-type-badge {
+            font-size: 0.7rem;
+            font-weight: 700;
+            letter-spacing: 0.13em;
+            text-transform: uppercase;
+            padding: 0.28rem 0.9rem;
+            border-radius: 99px;
+            background: rgba(232, 148, 74, 0.12);
+            color: var(--accent-warm);
+            border: 1px solid rgba(232, 148, 74, 0.28);
+        }
+        .event-meta {
+            font-size: 0.82rem;
+            color: var(--text-secondary);
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem 1.4rem;
+            align-items: center;
+        }
+        .event-meta span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.32rem;
+        }
+        .event-meta svg { flex-shrink: 0; }
+        .event-title {
+            font-family: 'Source Serif 4', serif;
+            font-size: clamp(1.55rem, 3.5vw, 2.2rem);
+            font-weight: 600;
+            line-height: 1.22;
+            letter-spacing: -0.015em;
+            color: var(--text-primary);
+        }
+
+        /* ── Body: gallery + text two-column ── */
+        .event-body {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2.5rem;
+            align-items: start;
+        }
+
+        /* ── Photo gallery ── */
+        .event-gallery {
+            display: grid;
+            gap: 0.6rem;
+        }
+        /* Dynamic grid layouts based on photo count */
+        .event-gallery[data-count="1"] {
+            grid-template-columns: 1fr;
+        }
+        .event-gallery[data-count="2"] {
+            grid-template-columns: 1fr 1fr;
+        }
+        .event-gallery[data-count="3"] {
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: auto auto;
+        }
+        .event-gallery[data-count="3"] .gallery-item:first-child {
+            grid-column: 1 / -1;
+        }
+        .event-gallery[data-count="4"] {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 0;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--bg-card);
+        }
+        .gallery-item::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0,0,0,0.18);
+            transition: background 0.25s ease;
+        }
+        .gallery-item:hover::after {
+            background: rgba(0,0,0,0.05);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.04);
+        }
+
+        /* Placeholder photo tiles (no image) */
+        .gallery-placeholder {
+            width: 100%;
+            aspect-ratio: 4/3;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 0.6rem;
+            background: linear-gradient(135deg, #131820 0%, #1c2436 100%);
+            border-radius: 0;
+            color: var(--text-secondary);
+            font-size: 0.78rem;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            border: 1px dashed rgba(255,255,255,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .gallery-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 30% 40%, rgba(232,148,74,0.07) 0%, transparent 65%);
+        }
+        .gallery-placeholder .ph-icon {
+            font-size: 2.2rem;
+            opacity: 0.5;
+        }
+        /* Tall placeholder for the "first-child full-width" slot */
+        .event-gallery[data-count="3"] .gallery-item:first-child .gallery-placeholder {
+            aspect-ratio: 16/7;
+        }
+
+        /* ── Text side ── */
+        .event-text {
+            display: flex;
+            flex-direction: column;
+            gap: 1.1rem;
+        }
+        .event-text p {
+            font-size: 0.975rem;
+            line-height: 1.82;
+            color: var(--text-secondary);
+        }
+        .event-text p:first-child {
+            color: #cdd2dd; /* slightly brighter for the lead paragraph */
+        }
+        .event-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.4rem;
+            margin-top: 0.6rem;
+        }
+        .event-tag {
+            font-size: 0.7rem;
+            font-weight: 500;
+            padding: 0.2rem 0.65rem;
+            border-radius: 99px;
+            background: rgba(232, 148, 74, 0.08);
+            color: var(--accent-warm);
+            border: 1px solid rgba(232, 148, 74, 0.2);
+        }
+
+        /* ── Lightbox ── */
+        .lightbox-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(6, 8, 12, 0.94);
+            z-index: 999;
+            align-items: center;
+            justify-content: center;
+            cursor: zoom-out;
+            backdrop-filter: blur(6px);
+        }
+        .lightbox-overlay.open {
+            display: flex;
+        }
+        .lightbox-overlay img {
+            max-width: 90vw;
+            max-height: 88vh;
+            border-radius: 8px;
+            box-shadow: 0 32px 80px rgba(0,0,0,0.7);
+            cursor: default;
+        }
+        .lightbox-close {
+            position: absolute;
+            top: 1.5rem;
+            right: 1.8rem;
+            font-size: 1.8rem;
+            color: var(--text-secondary);
+            background: none;
+            border: none;
+            cursor: pointer;
+            line-height: 1;
+            transition: color 0.2s;
+        }
+        .lightbox-close:hover { color: var(--text-primary); }
+
+        /* ── CTA banner ── */
+        #outreach-cta {
+            padding: 1rem 2rem 5rem;
+        }
+        .outreach-cta-inner {
+            max-width: 780px;
+            margin: 0 auto;
+            text-align: center;
+            background: rgba(255,255,255,0.03);
+            border: 1px solid var(--border-subtle);
+            border-radius: 20px;
+            padding: 3rem 2.5rem;
+        }
+        .outreach-cta-inner h2 {
+            font-family: 'Source Serif 4', serif;
+            font-size: 1.7rem;
+            margin-bottom: 0.85rem;
+            color: var(--text-primary);
+        }
+        .outreach-cta-inner p {
+            font-size: 0.98rem;
+            line-height: 1.75;
+            color: var(--text-secondary);
+            margin-bottom: 1.7rem;
+        }
+        .btn-outreach {
+            display: inline-block;
+            padding: 0.78rem 2.1rem;
+            border-radius: 99px;
+            background: linear-gradient(135deg, var(--accent-warm), var(--accent-gold));
+            color: #08090d;
+            font-weight: 600;
+            font-size: 0.92rem;
+            text-decoration: none;
+            transition: opacity 0.2s ease, transform 0.2s ease;
+        }
+        .btn-outreach:hover {
+            opacity: 0.88;
+            transform: translateY(-2px);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 860px) {
+            .event-body {
+                grid-template-columns: 1fr;
+            }
+            .event-gallery {
+                order: -1; /* gallery always on top on small screens */
+            }
+        }
+        @media (max-width: 560px) {
+            .event-gallery[data-count="2"],
+            .event-gallery[data-count="3"],
+            .event-gallery[data-count="4"] {
+                grid-template-columns: 1fr;
+            }
+            .event-gallery[data-count="3"] .gallery-item:first-child {
+                grid-column: unset;
+            }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="nebula-canvas"></canvas>
+    <nav id="navbar"></nav>
+
+    <!-- ── Hero ── -->
+    <section class="hero small">
+        <div class="hero-content">
+            <h1>Science <span class="highlight">Outreach</span></h1>
+            <p class="hero-subtitle">
+                Bringing the wonders of the cosmos to communities through
+                workshops, seminars, and public engagement.
+            </p>
+        </div>
+    </section>
+
+    <!-- ── Intro blurb ── -->
+    <div class="outreach-intro">
+        <p>
+            Science thrives when it is shared. The Star &amp; Planet Formation Group at
+            IISER Tirupati is committed to communicating our research beyond the academic
+            community — inspiring students, educators, and the public to explore the
+            Universe alongside us.
+        </p>
+    </div>
+
+    <!-- ── Section label ── -->
+    <div class="section-header" style="position:relative;z-index:1;padding:0 2rem 1.5rem;">
+        <p class="section-label">What We Do</p>
+        <h2 class="section-title">Our Activities</h2>
+    </div>
+
+    <!-- ═══════════════════════════════════════
+         EVENT FEED
+    ═══════════════════════════════════════ -->
+    <section id="outreach-feed">
+
+        <!-- ────────────────────────────────
+             EVENT 1 — Astronomy Workshop @ IIT Tirupati
+        ──────────────────────────────── -->
+        <article class="event-article" id="event-astronomy-workshop">
+            <header class="event-header">
+                <div class="event-type-row">
+                    <span class="event-type-badge">Workshop</span>
+                    <div class="event-meta">
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            2025
+                        </span>
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            IIT Tirupati &amp; IISER Tirupati
+                        </span>
+                    </div>
+                </div>
+                <h2 class="event-title">Introduction to Astronomy &amp; Astrophysics</h2>
+            </header>
+
+            <div class="event-body">
+
+                <!-- Photo gallery — swap placeholder divs for <img> tags when photos are available -->
+                <div class="event-gallery" data-count="3">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🔭</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🌌</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🪐</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Text content -->
+                <div class="event-text">
+                    <p>
+                        An introductory workshop jointly organised by the Star &amp; Planet Formation
+                        Group at IISER Tirupati and IIT Tirupati, designed to make the fundamental
+                        concepts of astronomy and astrophysics accessible to undergraduate students
+                        and curious minds from both institutions. The sessions covered a wide range
+                        of topics — from the life-cycle of stars and nebular chemistry to the
+                        mechanics of planet formation in protoplanetary disks.
+                    </p>
+                    <p>
+                        Participants had the opportunity to engage with hands-on activities,
+                        including guided night-sky observation sessions using telescopes set up on
+                        campus. Interactive Q&amp;A discussions with research scholars allowed
+                        attendees to get a realistic picture of what it means to pursue a career
+                        in astrophysics research. The workshop was met with great enthusiasm and
+                        inspired several participants to explore further study in the field.
+                    </p>
+                    <div class="event-tags">
+                        <span class="event-tag">Astronomy</span>
+                        <span class="event-tag">Astrophysics</span>
+                        <span class="event-tag">Hands-on</span>
+                        <span class="event-tag">Undergraduate</span>
+                        <span class="event-tag">Night Sky</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ────────────────────────────────
+             EVENT 2 — Public Lecture Series (upcoming placeholder)
+        ──────────────────────────────── -->
+        <article class="event-article" id="event-public-lecture">
+            <header class="event-header">
+                <div class="event-type-row">
+                    <span class="event-type-badge">Seminar</span>
+                    <div class="event-meta">
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Upcoming
+                        </span>
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            IISER Tirupati
+                        </span>
+                    </div>
+                </div>
+                <h2 class="event-title">Public Lecture Series: How Stars and Planets are Born</h2>
+            </header>
+
+            <div class="event-body">
+
+                <div class="event-gallery" data-count="2">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🌠</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">✨</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-text">
+                    <p>
+                        This upcoming public lecture series will offer accessible, jargon-free
+                        talks on one of the most fundamental questions in astronomy — how do stars
+                        and their planetary companions come to exist? Drawing on the group's
+                        current research, speakers will walk the audience through the journey from
+                        cold molecular clouds to fully-formed solar systems, including our own
+                        neighbourhood in the Milky Way.
+                    </p>
+                    <p>
+                        The lectures are designed to be enjoyed by anyone with curiosity about the
+                        night sky, regardless of scientific background. Each session will include
+                        a live Q&amp;A with the researchers, as well as a short stargazing segment
+                        weather permitting. Details on dates and registration will be announced via
+                        the group's social channels shortly.
+                    </p>
+                    <div class="event-tags">
+                        <span class="event-tag">Public Talk</span>
+                        <span class="event-tag">Star Formation</span>
+                        <span class="event-tag">Exoplanets</span>
+                        <span class="event-tag">All Welcome</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <!-- ────────────────────────────────
+             EVENT 3 — School Programme (upcoming placeholder)
+        ──────────────────────────────── -->
+        <article class="event-article" id="event-school-programme">
+            <header class="event-header">
+                <div class="event-type-row">
+                    <span class="event-type-badge">School Programme</span>
+                    <div class="event-meta">
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                            Upcoming
+                        </span>
+                        <span>
+                            <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            Tirupati Region Schools
+                        </span>
+                    </div>
+                </div>
+                <h2 class="event-title">Astronomy Awareness for School Students</h2>
+            </header>
+
+            <div class="event-body">
+
+                <div class="event-gallery" data-count="4">
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">📡</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🌙</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">☀️</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                    <div class="gallery-item">
+                        <div class="gallery-placeholder">
+                            <span class="ph-icon">🌌</span>
+                            <span>Photo coming soon</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="event-text">
+                    <p>
+                        This outreach initiative brings our researchers directly into secondary
+                        schools across the Tirupati region to spark a passion for science at an
+                        early age. Sessions introduce students to the wonders of the night sky —
+                        constellations, planets visible to the naked eye, and the stories behind
+                        what we see — before diving into more exploratory topics such as how
+                        telescopes work and what astronomers actually do in their day-to-day
+                        research.
+                    </p>
+                    <p>
+                        Students get the rare chance to interact directly with PhD scholars and
+                        ask candid questions about a career in science. Hands-on demos — including
+                        model solar systems and live image-processing of real astronomical data —
+                        make the sessions both educational and memorable. The programme aims to
+                        reach students from varied socioeconomic backgrounds, helping broaden
+                        access to science education in the region.
+                    </p>
+                    <div class="event-tags">
+                        <span class="event-tag">Schools</span>
+                        <span class="event-tag">Telescopes</span>
+                        <span class="event-tag">Night Sky</span>
+                        <span class="event-tag">Career in Science</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+    </section><!-- /#outreach-feed -->
+
+    <!-- ── CTA ── -->
+    <section id="outreach-cta">
+        <div class="outreach-cta-inner">
+            <h2>Want to Collaborate or Invite Us?</h2>
+            <p>
+                If you are a school, college, or organisation interested in hosting an
+                astronomy workshop or outreach session, we would love to hear from you.
+            </p>
+            <a href="../index.html#contact" class="btn-outreach">Get in Touch</a>
+        </div>
+    </section>
+
+    <!-- ── Lightbox ── -->
+    <div class="lightbox-overlay" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+        <img id="lightbox-img" src="" alt="">
+    </div>
+
+    <footer id="footer"></footer>
+
+    <script type="module" src="../js/main.js"></script>
+
+    <script>
+        /* ── Scroll-reveal ── */
+        (function () {
+            const articles = document.querySelectorAll('.event-article');
+            if (!('IntersectionObserver' in window)) {
+                articles.forEach(a => a.classList.add('visible'));
+                return;
+            }
+            const obs = new IntersectionObserver((entries) => {
+                entries.forEach((entry, i) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        obs.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.08 });
+            articles.forEach(a => obs.observe(a));
+        })();
+
+        /* ── Lightbox for real photos ── */
+        (function () {
+            const overlay = document.getElementById('lightbox');
+            const img     = document.getElementById('lightbox-img');
+            const close   = document.getElementById('lightbox-close');
+
+            document.querySelectorAll('.gallery-item img').forEach(photo => {
+                photo.style.cursor = 'zoom-in';
+                photo.addEventListener('click', () => {
+                    img.src = photo.src;
+                    img.alt = photo.alt;
+                    overlay.classList.add('open');
+                });
+            });
+
+            function closeLB() { overlay.classList.remove('open'); img.src = ''; }
+            close.addEventListener('click', closeLB);
+            overlay.addEventListener('click', e => { if (e.target === overlay) closeLB(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape') closeLB(); });
+        })();
+    </script>
+</body>
+</html>

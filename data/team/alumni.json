@@ -1,0 +1,52 @@
+{
+  "members": [
+    {
+      "id": "alumni_1",
+      "initials": "AB",
+      "name": "Ava Byrne",
+      "role": "PhD Alum",
+      "batch": "2018 - 2023",
+      "photo": "data/team/photos/ava_byrne.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    },
+    {
+      "id": "alumni_2",
+      "initials": "CM",
+      "name": "Caleb Moore",
+      "role": "MS Alum",
+      "batch": "2020 - 2022",
+      "photo": "data/team/photos/caleb_moore.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    },
+    {
+      "id": "alumni_3",
+      "initials": "DN",
+      "name": "Dina Novak",
+      "role": "Project Alum",
+      "batch": "2017 - 2019",
+      "photo": "data/team/photos/dina_novak.jpg",
+      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "links": {
+        "website": "#",
+        "scholar": "#",
+        "ads": "#",
+        "orcid": "#"
+      }
+    }
+  ]
+}
