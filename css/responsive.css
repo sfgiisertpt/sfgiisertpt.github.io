@@ -21,6 +21,17 @@
     footer {
         padding: 3rem 2rem;
     }
+
+    /* Research teaser: stack at tablet */
+    .research-teaser-asymmetric {
+        grid-template-columns: 1fr;
+    }
+
+    .research-teaser-editorial {
+        padding: 2.5rem 0;
+        border-right: none;
+        border-bottom: 1px solid var(--border-subtle);
+    }
 }
 
 /* Mobile Menu Button Display */

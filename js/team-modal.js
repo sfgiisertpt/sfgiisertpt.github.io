@@ -38,26 +38,67 @@ function createAvatarElement(member, className) {
     return html;
 }
 
-function getSocialIcon(label) {
-    const fontSize = label.length > 1 ? 8.5 : 12;
-    return `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><text x="12" y="15.5" text-anchor="middle" dominant-baseline="middle" font-size="${fontSize}" font-weight="700">${label}</text></svg>`;
-}
+// SVG icons keyed by link type
+const SOCIAL_ICONS = {
+    website: {
+        title: 'Personal Website',
+        svg: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="2" y1="12" x2="22" y2="12"/>
+                <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+              </svg>`
+    },
+    scholar: {
+        title: 'Google Scholar',
+        svg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M2 12l10 5 10-5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>`
+    },
+    ads: {
+        title: 'NASA ADS',
+        svg: `<img src="https://ui.adsabs.harvard.edu/styles/img/transparent_logo.svg" alt="NASA ADS" style="width:100%;height:100%;object-fit:contain;" />`
+    },
+    orcid: {
+        title: 'ORCID',
+        svg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2zm-1.086 4.5a.914.914 0 1 1 0 1.828.914.914 0 0 1 0-1.828zM9.5 9.5h2.414v8H9.5v-8zm3.414 0h2.172c2.07 0 3.414 1.414 3.414 4s-1.344 4-3.414 4h-2.172v-8zm1.914 1.5v5h.258c1.117 0 1.5-.883 1.5-2.5s-.383-2.5-1.5-2.5h-.258z"/>
+              </svg>`
+    },
+    linkedin: {
+        title: 'LinkedIn',
+        svg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+                <rect x="2" y="9" width="4" height="12"/>
+                <circle cx="4" cy="4" r="2"/>
+              </svg>`
+    },
+    twitter: {
+        title: 'X (Twitter)',
+        svg: `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+              </svg>`
+    }
+};
 
 function createSocialLinks(links = {}, className) {
-    const socialItems = [
-        { key: 'website', label: 'LO', title: 'Lorem ipsum' },
-        { key: 'scholar', label: 'IP', title: 'Dolor sit amet' },
-        { key: 'ads', label: 'DO', title: 'Consectetur adipiscing' },
-        { key: 'orcid', label: 'SI', title: 'Sed do eiusmod' }
-    ];
+    // Ordered list of known social link types
+    const knownKeys = ['website', 'scholar', 'ads', 'orcid', 'linkedin', 'twitter'];
 
-    return socialItems.map((item) => {
-        const href = normalizeText(links[item.key]).trim();
-        if (!href) {
+    return knownKeys.map((key) => {
+        const href = normalizeText(links[key]).trim();
+        // Skip missing links or explicit placeholder '#'
+        if (!href || href === '#') {
             return '';
         }
 
-        return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${className}" title="${item.title}">${getSocialIcon(item.label)}</a>`;
+        const meta = SOCIAL_ICONS[key];
+        if (!meta) {
+            return '';
+        }
+
+        return `<a href="${href}" target="_blank" rel="noopener noreferrer" class="${className}" title="${meta.title}">${meta.svg}</a>`;
     }).join('');
 }
 

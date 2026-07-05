@@ -1,14 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Team | SFG@IISERT</title>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="../css/main.css">
     <link rel="stylesheet" href="../css/components.css">
     <link rel="stylesheet" href="../css/responsive.css">
 </head>
+
 <body>
     <canvas id="nebula-canvas"></canvas>
 
@@ -17,7 +21,7 @@
 
     <section id="group-pi">
         <div class="section-header">
-            
+
             <h2 class="section-title">Principal Investigator</h2>
         </div>
         <div class="pi-profile" id="pi-profile"></div>
@@ -43,7 +47,7 @@
 
     <section id="research-assistants">
         <div class="team-category">
-            <h3 class="team-category-title">Consectetur Adipiscing</h3>
+            <h3 class="team-category-title">Research Assistants</h3>
             <div class="team-member-grid" data-team-file="research-assistants.json"></div>
         </div>
     </section>
@@ -57,43 +61,56 @@
 
     <div id="team-modals"></div>
 
+
     <section id="join-team">
         <div class="section-header">
-            <p class="section-label">Lorem</p>
-            <h2 class="section-title">Lorem Ipsum Dolor</h2>
+            <p class="section-label">Join Us</p>
+            <h2 class="section-title">Openings & Opportunities</h2>
         </div>
+        <p
+            style="text-align:center;max-width:600px;margin:0 auto 2.5rem;color:var(--text-secondary);font-size:0.95rem;line-height:1.6;">
+            We don't have any open positions at the moment, but check back here — we'll post updates as opportunities
+            arise.
+        </p>
         <div class="research-grid">
-            <div class="research-card" data-delay="0">
+            <a href="#" class="research-card" data-delay="0">
                 <div class="research-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
-                        <path d="M12 3a6 6 0 00-6 6c0 6 6 12 6 12s6-6 6-12a6 6 0 00-6-6z"/>
-                        <circle cx="12" cy="9" r="2"/>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)"
+                        stroke-width="1.5">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+                        <polyline points="14 2 14 8 20 8" />
+                        <line x1="16" y1="13" x2="8" y2="13" />
+                        <line x1="16" y1="17" x2="8" y2="17" />
+                        <polyline points="10 9 9 9 8 9" />
                     </svg>
                 </div>
-                <h3>Lorem Ipsum</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="research-card" data-delay="100">
+                <h3>Available Projects</h3>
+                <p>See what we're currently working on and potential project areas for new members.</p>
+            </a>
+            <a href="#" class="research-card" data-delay="100">
                 <div class="research-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
-                        <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-                        <path d="M2 17l10 5 10-5"/>
-                        <path d="M2 12l10 5 10-5"/>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)"
+                        stroke-width="1.5">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                        <circle cx="9" cy="7" r="4" />
+                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
                     </svg>
                 </div>
-                <h3>Dolor Sit Amet</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
-            <div class="research-card" data-delay="200">
+                <h3>Open Positions</h3>
+                <p>Any open roles — PhD, postdoc, or project positions — will be listed here.</p>
+            </a>
+            <a href="#" class="research-card" data-delay="200">
                 <div class="research-icon">
-                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)" stroke-width="1.5">
-                        <circle cx="12" cy="12" r="3"/>
-                        <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="var(--accent-warm)"
+                        stroke-width="1.5">
+                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                        <polyline points="22,6 12,13 2,6" />
                     </svg>
                 </div>
-                <h3>Consectetur Adipiscing</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-            </div>
+                <h3>Get in Touch</h3>
+                <p>Interested in joining? Reach out with your CV and a brief note about your interests.</p>
+            </a>
         </div>
     </section>
 
@@ -101,4 +118,5 @@
 
     <script type="module" src="../js/main.js"></script>
 </body>
+
 </html>

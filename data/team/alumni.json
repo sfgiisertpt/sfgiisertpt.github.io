@@ -1,22 +1,6 @@
 {
   "members": [
     {
-      "id": "alumni_1",
-      "initials": "AB",
-      "name": "Ava Byrne",
-      "role": "PhD Alum",
-      "batch": "2018 - 2023",
-      "photo": "data/team/photos/ava_byrne.jpg",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "links": {
-        "website": "#",
-        "scholar": "#",
-        "ads": "#",
-        "orcid": "#"
-      }
-    },
-    {
       "id": "alumni_2",
       "initials": "CM",
       "name": "Caleb Moore",
@@ -33,19 +17,19 @@
       }
     },
     {
-      "id": "alumni_3",
-      "initials": "DN",
-      "name": "Dina Novak",
-      "role": "Project Alum",
-      "batch": "2017 - 2019",
-      "photo": "data/team/photos/dina_novak.jpg",
-      "about": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-      "researchInterests": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+      "id": "sasi_mitra",
+      "initials": "SM",
+      "name": "Sasi Mitra",
+      "role": "MS Alum",
+      "batch": "2021 - 2026",
+      "photo": "data/team/photos/sasi_mitra.jpeg",
+      "about": "Something something about Sasi Mitra Behara.",
+      "researchInterests": "Some more placeholder text about Sasi Mitra Behara's research interests.",
       "links": {
-        "website": "#",
-        "scholar": "#",
-        "ads": "#",
-        "orcid": "#"
+        "website": "http://sasimitra.me/",
+        "scholar": "https://scholar.google.com/citations?user=oRG1hTAAAAAJ&hl=en",
+        "ads": "https://ui.adsabs.harvard.edu/search/q=author%3A%22Behara%2C%20Sasi%20M.%22&sort=date%20desc%2C%20bibcode%20desc&p_=0",
+        "orcid": "https://orcid.org/0009-0009-6055-7410"
       }
     }
   ]

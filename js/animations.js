@@ -18,7 +18,18 @@ function setupScrollAnimations() {
         });
     }, observerOptions);
 
-    document.querySelectorAll('.research-card, .team-card, .publication-item, .research-teaser-card, .research-highlight-card').forEach(el => {
+    document.querySelectorAll('.research-card, .team-card, .publication-item, .research-highlight-card').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Editorial panel (fade up)
+    document.querySelectorAll('.research-teaser-editorial').forEach(el => {
+        observer.observe(el);
+    });
+
+    // Ruled list items — stagger each by 80ms
+    document.querySelectorAll('.research-teaser-list li').forEach((el, i) => {
+        el.dataset.delay = i * 80;
         observer.observe(el);
     });
 }

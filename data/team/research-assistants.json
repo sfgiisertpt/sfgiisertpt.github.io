@@ -1,22 +1,6 @@
 {
   "members": [
     {
-      "id": "sasi_mitra",
-      "initials": "SM",
-      "name": "Sasi Mitra",
-      "role": "MS Student",
-      "batch": "2021 - Present",
-      "photo": "data/team/photos/sasi_mitra.jpeg",
-      "about": "Something something about Sasi Mitra Behara.",
-      "researchInterests": "Some more placeholder text about Sasi Mitra Behara's research interests.",
-      "links": {
-        "website": "#",
-        "scholar": "#",
-        "ads": "#",
-        "orcid": "#"
-      }
-    },
-    {
       "id": "dolor",
       "initials": "LO",
       "name": "Lorem Five",
