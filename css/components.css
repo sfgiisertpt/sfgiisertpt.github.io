@@ -55,6 +55,10 @@
     transition: all 0.4s ease;
     opacity: 0;
     transform: translateY(40px);
+    /* Reset anchor styles when used as <a> */
+    color: inherit;
+    text-decoration: none;
+    display: block;
 }
 
 .research-card.visible {
@@ -102,6 +106,7 @@
     font-weight: 600;
     margin-bottom: 1rem;
     letter-spacing: -0.01em;
+    color: var(--text-primary);
 }
 
 .research-card p {
@@ -111,60 +116,340 @@
 }
 
 /* =========================================================================
-   Research Teaser Cards (homepage compact view)
+   Research Teaser – Asymmetric Layout (homepage)
    ========================================================================= */
 
-.research-teaser-grid {
+.research-teaser-asymmetric {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1.5rem;
-    max-width: 1200px;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+    max-width: 1100px;
     margin: 0 auto;
+    border-top: 1px solid var(--border-subtle);
 }
 
-.research-teaser-card {
-    background: var(--bg-card);
-    border: 1px solid var(--border-subtle);
-    border-radius: 16px;
-    padding: 2rem;
+/* Left: editorial panel */
+.research-teaser-editorial {
+    padding: 3.5rem 4rem 3.5rem 0;
+    border-right: 1px solid var(--border-subtle);
+    text-decoration: none;
+    color: inherit;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    text-align: center;
-    gap: 1rem;
+    gap: 1.25rem;
+    transition: border-color 0.3s ease;
     opacity: 0;
-    transform: translateY(40px);
-    transition: all 0.4s ease;
-    position: relative;
-    overflow: hidden;
+    transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease, border-color 0.3s ease;
 }
 
-.research-teaser-card.visible {
+.research-teaser-editorial.visible {
     opacity: 1;
     transform: translateY(0);
 }
 
-.research-teaser-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--accent-warm), var(--accent-gold));
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.4s ease;
+.research-teaser-editorial:hover {
+    border-right-color: rgba(232, 148, 74, 0.4);
 }
 
-.research-teaser-card:hover::before {
-    transform: scaleX(1);
+.research-teaser-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--accent-warm);
 }
 
-.research-teaser-card h3 {
-    font-size: 1rem;
+.research-teaser-headline {
+    font-family: 'Source Serif 4', serif;
+    font-size: clamp(1.4rem, 2.5vw, 2rem);
     font-weight: 600;
-    letter-spacing: -0.01em;
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+}
+
+.research-teaser-body {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: var(--text-secondary);
+    max-width: 420px;
+}
+
+.research-teaser-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--accent-warm);
+    margin-top: auto;
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-subtle);
+    transition: gap 0.3s ease;
+}
+
+.research-teaser-editorial:hover .research-teaser-cta {
+    gap: 0.75rem;
+}
+
+.research-teaser-editorial:hover .research-teaser-cta svg {
+    transform: translateX(3px);
+}
+
+.research-teaser-cta svg {
+    transition: transform 0.3s ease;
+}
+
+/* Right: ruled list of topics */
+.research-teaser-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.research-teaser-list li {
+    border-bottom: 1px solid var(--border-subtle);
+    opacity: 0;
+    transform: translateX(16px);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.research-teaser-list li:first-child {
+    border-top: none; /* top border comes from parent grid */
+}
+
+.research-teaser-list li.visible {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.research-teaser-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.35rem 1.5rem 1.35rem 2.5rem;
+    text-decoration: none;
+    color: var(--text-secondary);
+    font-size: 1rem;
+    font-weight: 400;
+    transition: color 0.25s ease, padding-left 0.25s ease, background 0.25s ease;
+    gap: 1rem;
+}
+
+.research-teaser-item:hover {
+    color: var(--text-primary);
+    padding-left: 3rem;
+    background: rgba(232, 148, 74, 0.03);
+}
+
+.research-teaser-item__name {
+    flex: 1;
+}
+
+.research-teaser-item__icon-wrapper {
+    width: 46px;
+    height: 46px;
+    border-radius: 50%;
+    border: 1.5px solid rgba(255, 255, 255, 0.15);
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: border-color 0.4s cubic-bezier(0.4, 0, 0.2, 1), 
+                transform 0.4s cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.research-teaser-item:hover .research-teaser-item__icon-wrapper {
+    border-color: var(--accent-gold);
+    transform: scale(1.08);
+    box-shadow: 0 0 12px rgba(212, 168, 85, 0.2), 
+                inset 0 0 8px rgba(212, 168, 85, 0.1);
+}
+
+.research-teaser-item__icon {
+    width: 24px;
+    height: 24px;
+    flex-shrink: 0;
+    color: var(--accent-warm);
+    opacity: 0.65;
+    transition: opacity 0.3s ease, color 0.3s ease;
+}
+
+.research-teaser-item:hover .research-teaser-item__icon {
+    opacity: 1;
+    color: var(--accent-gold);
+}
+
+/* --- SVG Hover Micro-animations (Astrophysics Themed) --- */
+
+/* Protoplanetary Disks: Rotate planet around center */
+@keyframes sfg-orbit-planet {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.research-teaser-item:hover .protoplanetary-disk-icon .orbiting-planet {
+    animation: sfg-orbit-planet 8s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .protoplanetary-disk-icon {
+    animation: sfg-disk-wobble 4s ease-in-out infinite alternate;
+}
+@keyframes sfg-disk-wobble {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(2deg); }
+}
+
+/* Brown Dwarfs: Pulse surface spots of the atmosphere */
+@keyframes sfg-dwarf-spots {
+    0%, 100% {
+        transform: translateY(0) scale(1);
+        opacity: 0.85;
+    }
+    50% {
+        transform: translateY(-2px) scale(1.1);
+        opacity: 1;
+    }
+}
+.research-teaser-item:hover .brown-dwarf-icon .dwarf-spot-1 {
+    animation: sfg-dwarf-spots 2.5s ease-in-out infinite;
+    transform-origin: 70px 85px;
+}
+.research-teaser-item:hover .brown-dwarf-icon .dwarf-spot-2 {
+    animation: sfg-dwarf-spots 3.5s ease-in-out infinite;
+    animation-delay: 0.5s;
+    transform-origin: 130px 115px;
+}
+.research-teaser-item:hover .brown-dwarf-icon .dwarf-spot-3 {
+    animation: sfg-dwarf-spots 2.8s ease-in-out infinite;
+    animation-delay: 1s;
+    transform-origin: 100px 145px;
+}
+
+/* Role of Metallicity: Spin orbital shells at different speeds */
+@keyframes sfg-spin-orbit-1 {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+@keyframes sfg-spin-orbit-2 {
+    from { transform: rotate(60deg); }
+    to { transform: rotate(420deg); }
+}
+@keyframes sfg-spin-orbit-3 {
+    from { transform: rotate(-60deg); }
+    to { transform: rotate(300deg); }
+}
+.research-teaser-item:hover .metallicity-icon .shell-orbit-1 {
+    animation: sfg-spin-orbit-1 12s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .metallicity-icon .shell-orbit-2 {
+    animation: sfg-spin-orbit-2 15s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .metallicity-icon .shell-orbit-3 {
+    animation: sfg-spin-orbit-3 9s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .metallicity-icon .electron-1 {
+    animation: sfg-spin-orbit-1 12s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .metallicity-icon .electron-2 {
+    animation: sfg-spin-orbit-2 15s linear infinite;
+    transform-origin: 100px 100px;
+}
+.research-teaser-item:hover .metallicity-icon .electron-3 {
+    animation: sfg-spin-orbit-3 9s linear infinite;
+    transform-origin: 100px 100px;
+}
+
+/* Initial Mass Function: Pulse stars sequentially */
+@keyframes sfg-imf-pulse {
+    0%, 100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+    50% {
+        transform: scale(1.25);
+        opacity: 1;
+        color: var(--accent-gold);
+    }
+}
+.research-teaser-item:hover .imf-icon .imf-star-1 {
+    animation: sfg-imf-pulse 1.8s ease-in-out infinite;
+    transform-origin: 35px 40px;
+}
+.research-teaser-item:hover .imf-icon .imf-star-2 {
+    animation: sfg-imf-pulse 1.8s ease-in-out infinite;
+    animation-delay: 0.3s;
+    transform-origin: 50px 75px;
+}
+.research-teaser-item:hover .imf-icon .imf-star-3 {
+    animation: sfg-imf-pulse 1.8s ease-in-out infinite;
+    animation-delay: 0.6s;
+    transform-origin: 75px 115px;
+}
+.research-teaser-item:hover .imf-icon .imf-star-4 {
+    animation: sfg-imf-pulse 1.8s ease-in-out infinite;
+    animation-delay: 0.9s;
+    transform-origin: 120px 155px;
+}
+.research-teaser-item:hover .imf-icon .imf-star-5 {
+    animation: sfg-imf-pulse 1.8s ease-in-out infinite;
+    animation-delay: 1.2s;
+    transform-origin: 170px 170px;
+}
+
+/* Variability in YSOs: Wave amplitude breathing & node bouncing */
+@keyframes sfg-wave-wobble {
+    0%, 100% {
+        transform: scaleY(1);
+    }
+    50% {
+        transform: scaleY(1.3) translateY(-10px);
+    }
+}
+.research-teaser-item:hover .variability-icon .wave-curve {
+    animation: sfg-wave-wobble 2.5s ease-in-out infinite;
+    transform-origin: 100px 100px;
+}
+@keyframes sfg-node-bounce-1 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-12px); }
+}
+@keyframes sfg-node-bounce-2 {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(8px); }
+}
+.research-teaser-item:hover .variability-icon .wave-node-1 {
+    animation: sfg-node-bounce-1 2.5s ease-in-out infinite;
+    transform-origin: 80px 100px;
+}
+.research-teaser-item:hover .variability-icon .wave-node-2 {
+    animation: sfg-node-bounce-2 2.5s ease-in-out infinite;
+    transform-origin: 140px 100px;
+}
+
+
+.research-teaser-item__arrow {
+    opacity: 0;
+    transform: translateX(-4px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    color: var(--accent-warm);
+    flex-shrink: 0;
+}
+
+.research-teaser-item:hover .research-teaser-item__arrow {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 /* =========================================================================
